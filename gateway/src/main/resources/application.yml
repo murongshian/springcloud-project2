@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: gateway
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        health-check-interval: 10s
+        health-check-path: /actuator/health
+    gateway:
+      routes:
+        - id: aaa
+          uri: lb://aaa
+          predicates:
+          - Path=/aaa/**
+        - id: bbb
+          uri: lb://bbb
+          predicates:
+          - Path=/bbb/**
+
+server:
+  port: 8088

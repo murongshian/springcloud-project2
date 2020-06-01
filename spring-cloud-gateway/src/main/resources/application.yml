@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: spring-cloud-gateway
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        health-check-interval: 10s
+        health-check-path: /actuator/health
+    gateway:
+      routes:
+        - id: spring-cloud-aaa
+          uri: lb://spring-cloud-aaa
+          predicates:
+            - Path=/aaa/**
+        - id: spring-cloud-bbb
+          uri: lb://spring-cloud-bbb
+          predicates:
+            - Path=/bbb/**
+
+server:
+  port: 8089

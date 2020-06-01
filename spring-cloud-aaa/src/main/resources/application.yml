@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: spring-cloud-aaa
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        health-check-path: /actuator/health
+        health-check-interval: 10s
+server:
+  port: 8083
+
+feign:
+  hystrix:
+    enabled: true
+
